@@ -1,3 +1,10 @@
+<?php
+$data = file_get_contents('data/pizza.json');
+$menu = json_decode($data, true);
+
+$menu = $menu["menu"];
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -13,22 +20,45 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <img src="img/logo.png">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Features</a>
-                <a class="nav-item nav-link" href="#">Pricing</a>
-                <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo.png" width="120">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home</a>
+                </div>
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col">
+                <h1>All Menu</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <?php foreach ($menu as $row) : ?>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img src="img/pizza/american-favourite.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">American Favourite</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h5 class="card-title">Rp. 60.000,-</h5>
+                            <a href="#" class="btn btn-primary">Pesan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
